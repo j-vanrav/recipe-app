@@ -28,6 +28,7 @@ function App() {
   const getSearch = e => {
     e.preventDefault(); /*prevent page refresh*/
     setQuery(search);
+    setSearch('');
   }
 
   return (
@@ -38,13 +39,16 @@ function App() {
           Search
         </button>
       </form>
+      <div className="recipes">
       {recipes.map(recipe =>(
         <Recipe
         key={recipe.recipe.label}
         title={recipe.recipe.label}
         calories={recipe.recipe.calories}
-        image={recipe.recipe.image}/>
+        image={recipe.recipe.image}
+        ingredients={recipe.recipe.ingredients}/>
       ))}
+      </div>
     </div>
   );
 }
