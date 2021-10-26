@@ -1,4 +1,10 @@
 .recipe{
+    background-color: transparent;
+
+    height: 300px;
+    border: 1px solid #f1f1f1;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+
     border-radius: 10px;
     box-shadow: 0px 5px 20px rgb(71, 71, 71);
     margin: 20px;
@@ -9,9 +15,48 @@
     align-items: center;
     min-width: 40%;
 }
+@keyframes dropdown{
+    from {height: 300px;}
+    to {height: 600px;}
+}
+
+.recipe:hover .recipe_inner{
+    transform: rotateY(180deg);
+    animation-name: dropdown;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+  }
+
+.recipe_inner{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+.recipe_front, .recipe_back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.recipe_front {
+    background-color: #bbb;
+    color: black;
+}
+  
+/* Style the back side */
+.recipe_back {
+    transform: rotateY(180deg);
+}
+
 
 .image{
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
 }
