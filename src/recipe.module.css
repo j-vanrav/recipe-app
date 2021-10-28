@@ -1,13 +1,36 @@
 .recipe{
     border-radius: 10px;
-    box-shadow: 0px 5px 20px rgb(71, 71, 71);
-    margin: 20px;
+    background: white;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    transition: 0.3s;
+}
+.recipe:hover{
+    box-shadow: 0px 5px 10px rgb(71, 71, 71);
+}
+.toggle:checked + .recipe + .ingredients{
+    max-height: 500px;
+}
+.recipe:after + .ingredients{
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+.toggle{
+    display:none;
+}
+
+.recipeHolder{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    background: white;
     align-items: center;
+    text-align: center;
     min-width: 40%;
+    margin: 20px;
 }
 
 .image{
@@ -15,4 +38,14 @@
     width: 100px;
     height: 100px;
     margin-bottom: 5%;
+}
+
+.ingredients{
+    border-radius: 10px;
+    background: white;
+    align-items: center;
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
 }
